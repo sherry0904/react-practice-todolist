@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import { useSelector} from 'react-redux';
+
+import TaskList from './component/TaskList';
+import Form from './component/Form';
+
 
 function App() {
+
+  const todoList = useSelector(state => state.todoList);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>To DO List</h2>
+      <p style={{textAlign: "left", width: "100%", fontSize: "13px"}}>待辦件數: {todoList.length}</p>
+      <Form/>
+      <TaskList todoList={todoList}/>
     </div>
   );
 }
